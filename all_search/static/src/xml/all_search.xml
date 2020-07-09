@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+
+	<t t-name="SearchIcon">
+		<li class="o_sys_item" title='Odoo Search'>
+			<a href="#" class="odoo_search_icon">
+				<i class="fa fa-search"/>
+			</a>
+		</li>
+		<div class="search_panel">
+			<div class="close_search">
+				<span class="odoo_search_close">
+					<i class="fa fa-close" style="background-color: #7d7cad; color: white; padding: 3px;"/>
+				</span>
+			</div>
+		
+			<div class="open_search">
+				<input class="search_field" placeholder="Search" type="text"/>
+				<span class="odoo_search_click">
+					<i class="fa fa-search"/>
+				</span>
+			</div>
+			<input type='text' class="dummy_class" style="display: none"></input>
+			<span class='fold-all' style='display: none' >Fold All</span><span class='unfold-all' style='display: none' >Unfold All</span><br/>
+			<div class="search_results">
+
+			</div>
+		</div>
+	</t>
+
+
+</templates>

@@ -170,7 +170,6 @@ class wizard_stop_task(models.TransientModel):
 
 		task_project.timesheet_ids.create({
 			'date' : fields.date.today(),
-			'employee_id' : employee.id,
 			'name' : self.description,
 			'task_id' : task_project.id,
 			'project_id' : task_project.project_id.id,
@@ -208,20 +207,3 @@ class wizard_stop_task(models.TransientModel):
 				'type': 'ir.actions.client',
 				'tag': 'reload',
 				}
-		
-#class Inherit_Config(models.TransientModel):
-#	_inherit = "res.config.settings"
-#	project_ids = fields.Many2one("project.project")
-
-#	def get_values(self):
-#		res = super(Inherit_Config, self).get_values()
-#		project_ids = self.env['ir.config_parameter'].sudo().get_param('project_task_timer_app.project_ids')
-#		res.update(
-#			project_ids = project_ids,
-#		)
-#		return res
-
-#	def set_values(self):
-#		super(Inherit_Config, self).set_values()
-#		self.env['ir.config_parameter'].sudo().set_param('project_task_timer_app.project_ids', self.project_ids)
-		

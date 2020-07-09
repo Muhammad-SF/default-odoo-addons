@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+    <t t-extend="mail.widget.Thread.Message">
+        <t t-jquery='p.o_mail_info span:last-child i:first-child' t-operation="after">
+            <i t-if="message.author_id != 'ODOOBOT' &amp;&amp; message.model != 'mail.channel' &amp;&amp; message.isDiscussion()"
+               class="fa fa-reply o_thread_icon o_message_reply" t-att-data-message-id="message.getID()" title="Reply on this message"/>
+        </t>
+    </t>
+</template>

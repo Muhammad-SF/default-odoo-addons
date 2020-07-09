@@ -1,0 +1,7 @@
+.o_mail_activity  .o_activity_color_done {
+    color: darken(theme-color('info'), 10%);
+}
+
+.o_activity_view .o_activity_summary_cell .done {
+            background-color: theme-color('info');
+        }

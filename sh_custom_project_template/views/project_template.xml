@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data>
+		
+		<record id="sh_project_project_template_task_form_view_inherit" model="ir.ui.view">
+		     <field name="name">project.project.template.task.form.view.inherit</field>
+		     <field name="model">project.project</field>
+		     <field name="inherit_id" ref="project.edit_project"/>
+		     <field name="arch" type="xml">
+ 				<xpath expr="//header" position="inside">
+						<button name="btn_project_generate_task" string="Generate Task" type="object" class="oe_highlight" groups="project.group_project_manager"/>
+				</xpath>				
+ 		        <field name="partner_id" position="after">
+		                <field name="project_template_id" domain="[('templ_active','=',True)]"  options="{'no_create_edit': True}" groups="project.group_project_manager"/> 
+                </field>
+		     </field>
+		</record>
+ 
+		<record id="sh_project_template_task_form_view" model="ir.ui.view">
+			<field name="name">Project Template Task Form</field>
+			<field name="model">project.template.task</field>			
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<group>
+							<group>
+								<field name="name"/>
+							</group>
+							<group> 
+								<field name="assigned_to"/>
+							</group>
+							 <group colspan="2">
+								<field name="description"/>
+							</group>
+						</group>	
+					</sheet>
+				</form>
+			</field>			
+		</record>
+ 
+		<record id="sh_project_template_form_view" model="ir.ui.view">
+			<field name="name">Project Template Form</field>
+			<field name="model">project.template</field>			
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<group>
+							<field name="name"/> 
+							<field name="templ_active"/> 
+						</group>
+						<notebook>
+							<page string="Template" >								
+								<field name="project_template_task_ids">
+									<tree>
+										<field name="name"/>
+										<field name="assigned_to"/>
+ 										<field name="description"/>
+									</tree>
+								</field>	
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>			
+		</record>
+
+		<record id="sh_project_template_tree_view" model="ir.ui.view">
+			<field name="name">Project Template Tree</field>
+			<field name="model">project.template</field>			
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/> 
+					<field name="templ_active"/>
+				</tree>			
+			</field>			
+		</record>
+		
+		<record id="sh_action_project_template" model="ir.actions.act_window">
+			<field name="name">Custom Project Template</field>
+			<field name="res_model">project.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+            <field name="type">ir.actions.act_window</field>
+		</record>
+			
+	</data>	
+		
+	<menuitem id="menu_custom_project_template" name="Custom Project Template" action="sh_action_project_template" 
+		parent="project.menu_project_config" groups="project.group_project_manager"/>
+</odoo>

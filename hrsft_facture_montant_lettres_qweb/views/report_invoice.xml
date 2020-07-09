@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="report_invoice_document" inherit_id="account.report_invoice_document">
+			<xpath expr="//div[@class='clearfix']" position="after">
+				<p>
+        			<strong>Arrêter la facture à la somme de:</strong>
+        			<p t-esc="o.get_amount_letter()"/>
+    			</p>
+			</xpath>
+		</template>
+
+		<template id="report_saleorder_document" inherit_id="sale.report_saleorder_document">
+			<xpath expr="//div[@class='clearfix']" position="after">
+				<p>
+        			<strong>Arrêter la facture à la somme de:</strong>
+        			<p t-esc="doc.get_amount_letter()"/>
+    			</p>
+			</xpath>
+		</template>
+
+		<template id="external_layout_standard" inherit_id="web.external_layout_standard">
+			<xpath expr="//div/div/img" position="attributes">
+				<attribute name="style">"max-height: 65px;"</attribute>
+			</xpath>
+			<xpath expr="//div/div[3]" position="replace"/>
+		</template>
+	</data>
+</odoo>

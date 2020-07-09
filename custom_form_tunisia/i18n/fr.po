@@ -1,0 +1,17 @@
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.report_invoice_document
+msgid "<strong>Customer Code:</strong>"
+msgstr "<strong>Code client :</strong>"
+
+#. module: account
+#: model_terms:ir.ui.view,arch_db:account.report_invoice_document
+msgid "<strong>Invoice Date:</strong>"
+msgstr "<strong>Date facture :</strong>"
+
+#. module: account
+#. openerp-web
+#: code:addons/account/static/src/xml/account_payment.xml:28
+#: model_terms:ir.ui.view,arch_db:account.report_invoice_document_with_payments
+#, python-format
+msgid "Paid on"
+msgstr "Acompte payé le"

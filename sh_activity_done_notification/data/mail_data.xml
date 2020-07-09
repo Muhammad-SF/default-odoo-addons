@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  
+    <!-- Template and notification section -->
+    <data noupdate="1">
+        <record id="send_done_notification_assigned_user" model="mail.template">
+            <field name="name">Send Done Activity Notification</field>
+            <field name="model_id" ref="mail.model_mail_activity"/>
+            <field name="partner_to">${object.create_user_id.partner_id.id}</field>
+            <field name="subject">Assigned activity # ${object.activity_type_id.name} of document  ${object.res_name} </field>
+            <field name="body_html" type="html">
+				<div style="margin: 0px; padding: 0px;">
+				    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+				        Dear ${object.create_user_id.partner_id.name}
+				        
+				        <br /><br />
+				         % if ctx.get('done_activity')
+				          
+				          Activity # ${object.activity_type_id.name} of document  ${object.res_name} has been done by ${ctx['user']}.
+				        
+					   		<br/><br/>
+					   		<strong> Feedback: </strong>${object.get_feedback()}<br/>
+				          <strong> Summary: </strong>${object.summary}<br/>
+				          <strong> Description: </strong>${object.get_note()}<br/>
+				          <strong> Due Date: </strong>${object.date_deadline}
+					   		
+					   		
+					   
+				         % endif
+				           % if ctx.get('edit_activity')
+				          
+				          Activity # ${object.activity_type_id.name} of document  ${object.res_name} has been modified by ${ctx['user']}.
+				          <br/><br/>
+				          <strong> Summary: </strong>${object.summary}<br/>
+				          <strong> Description: </strong>${object.get_note()}<br/>
+				          <strong> Due Date: </strong>${object.date_deadline}
+				         % endif
+				          % if ctx.get('unlink_activity')
+				          
+				          Activity  # ${object.activity_type_id.name} of document  ${object.res_name} has been cancelled by ${ctx['user']}.
+				          <br/><br/>
+				          <br/><br/>
+				          <strong> Summary: </strong>${object.summary}<br/>
+				          <strong> Description: </strong>${object.get_note()}<br/>
+				          <strong> Due Date: </strong>${object.date_deadline}
+				         % endif
+				        
+					  
+				    </p>
+				  
+					 <div style="display: inline-block; margin: 15px; text-align: center">
+	                      <a href="/mail/view?model=${object.res_model}&amp;res_id=${object.res_id}" target="_blank"
+	                          style="padding: 5px 10px; color: #FFFFFF; text-decoration: none; background-color: #875A7B; border: 1px solid #875A7B; border-radius: 3px"
+	                      >View</a>
+	                  </div>
+	                
+				</div>
+            </field>
+            <field name="lang">${object.user_id.partner_id.lang}</field>
+            <field name="user_signature" eval="False"/>
+            <field name="auto_delete" eval="True"/>
+        </record>
+    </data>
+</odoo>

@@ -3,7 +3,7 @@
 {
     'name': 'Project Task Timer with Start/Stop/Pause',
     "author": "Edge Technologies",
-    'version': '12.0.1.2',
+    'version': '12.0.1.3',
     'live_test_url': "https://youtu.be/QLU-cdefQcg",
     "images":['static/description/main_screenshot.png'],
     'summary': "Project task timer can be started and ended by the assigned person of the task and based on that, timesheet entry is generated.",
